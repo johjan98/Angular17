@@ -25,4 +25,17 @@ export class LabsComponent {
     age: 25,
     image: 'https://picsum.photos/200'
   }
+
+  clickHandler(){
+    alert('Hola');
+  }
+
+  changeHandler(event: Event){
+    console.log(event);
+  }
+
+  keyDownHandler(event: KeyboardEvent){
+    const input = event.target as HTMLInputElement;
+    console.log(input.value);
+  }
 }
