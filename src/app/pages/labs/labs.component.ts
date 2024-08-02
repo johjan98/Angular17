@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,12 +10,12 @@ import { CommonModule } from '@angular/common';
 })
 export class LabsComponent {
   welcome = 'Hola!!';
-  tasks = [
+  tasks = signal([
     'Instalar Angular CLI',
     'Crear proyecto',
     'Crear componentes'
-  ]
-  name = 'Johjan';
+  ]);
+  name = signal('Johjan');
   age = 25;
   disable = true;
   img = 'https://picsum.photos/200';
@@ -31,7 +31,9 @@ export class LabsComponent {
   }
 
   changeHandler(event: Event){
-    console.log(event);
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.name.set(newValue);
   }
 
   keyDownHandler(event: KeyboardEvent){
