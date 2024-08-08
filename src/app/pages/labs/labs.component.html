@@ -14,24 +14,24 @@
 
   <hr/>
 
-  <img [src]="person.image" alt="">
-  <input type="text" [value]="person.age">
+  <img [src]="person().image" alt="">
+  <input type="text" [value]="person().age">
   <button [disabled]="disable">Click me!!</button>
 
-  <p>Person: {{ person.name }}</p>
+  <p>Person: {{ person().name }}</p>
 
   <hr/>
-
+  <h1>Eventos Básicos</h1>
   <button (click)="clickHandler()">Click me!!!</button>
   <button (dblclick)="clickHandler()">Double click!!</button>
   <p>(change) -> Evento para el cambio de valor en input</p>
-  <input type="number" [value]="person.age" (change)="changeHandler($event)">
+  <input type="number" [value]="person().age" (change)="changeHandler($event)">
   <p>(keydown) -> Evento cuando se oprime una tecla</p>
-  <input type="text" [value]="person.name" (keydown)="keyDownHandler($event)">
+  <input type="text" [value]="person().name" (keydown)="keyDownHandler($event)">
   <p>(keydown) -> También se puede usar con una tecla o combinación específica. En este caso shift + t</p>
-  <input type="text" [value]="person.name" (keydown.shift.t)="clickHandler()">
+  <input type="text" [value]="person().name" (keydown.shift.t)="clickHandler()">
   <hr/>
-  <h1>Signals</h1>
+  <h1>Signals y ngFor</h1>
   <input type="text" [value]="name()"(change)="changeHandler($event)">
   <p>Name: {{ name() }}</p>
   <p>Name: {{ name() }}</p>
@@ -41,4 +41,16 @@
       {{ i }}  {{task}}
     </li>
   </ul>
+  <hr/>
+  <h1>Usando ngIf</h1>
+  <input type="number" [value]="person().age" (change)="changeAgeHandler($event)">
+  <div *ngIf="name() === 'johjan'">
+    Se usa ngIf. Se renderiza si name === 'johjan'
+  </div>
+  <div *ngIf="person().name === 'Johjan Stiven' && person().age > 18; else bloqueElse">
+    Soy Johjan y soy mayor de 18
+  </div>
+  <ng-template #bloqueElse>
+    Soy Johjan y soy menor de 18
+  </ng-template>
 </div>
