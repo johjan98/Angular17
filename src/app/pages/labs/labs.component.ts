@@ -21,7 +21,7 @@ export class LabsComponent {
   img = 'https://picsum.photos/200';
 
   person = signal({
-    name: 'Johjan Stiven',
+    name: 'Juan',
     age: 17,
     image: 'https://picsum.photos/200'
   })
@@ -50,5 +50,16 @@ export class LabsComponent {
         age: parseInt(newValue, 10)
       }
     });
+  }
+
+  changeNameHandler(event: Event){
+    const input = event.target as HTMLInputElement;
+    const newValue = input.value;
+    this.person.update(person =>{
+      return {
+        ...person,
+        name: newValue
+      }
+    })
   }
 }

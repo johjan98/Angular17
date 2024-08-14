@@ -21,6 +21,7 @@
   <p>Person: {{ person().name }}</p>
 
   <hr/>
+  
   <h1>Eventos Básicos</h1>
   <button (click)="clickHandler()">Click me!!!</button>
   <button (dblclick)="clickHandler()">Double click!!</button>
@@ -30,7 +31,9 @@
   <input type="text" [value]="person().name" (keydown)="keyDownHandler($event)">
   <p>(keydown) -> También se puede usar con una tecla o combinación específica. En este caso shift + t</p>
   <input type="text" [value]="person().name" (keydown.shift.t)="clickHandler()">
+  
   <hr/>
+  
   <h1>Signals y ngFor</h1>
   <input type="text" [value]="name()"(change)="changeHandler($event)">
   <p>Name: {{ name() }}</p>
@@ -41,7 +44,9 @@
       {{ i }}  {{task}}
     </li>
   </ul>
+
   <hr/>
+  
   <h1>Usando ngIf</h1>
   <input type="number" [value]="person().age" (change)="changeAgeHandler($event)">
   <div *ngIf="name() === 'johjan'">
@@ -53,4 +58,16 @@
   <ng-template #bloqueElse>
     Soy Johjan y soy menor de 18
   </ng-template>
+
+  <hr/>
+
+  <h1>Usando ngSwitch</h1>
+  <input type="text" [value]="person().name" (change)="changeNameHandler($event)">
+  <div [ngSwitch]="person().name">
+    <p *ngSwitchCase="'johjan'">Yo soy Johjan</p>
+    <p *ngSwitchCase="'julian'">Yo soy Julián</p>
+    <p *ngSwitchCase="'ana'">Yo soy Ana</p>
+    <p *ngSwitchCase="'valentina'">Yo soy Valentina</p>
+    <p *ngSwitchDefault>Mi nombre no está almacenado</p>
+  </div>
 </div>
