@@ -70,4 +70,33 @@
     <p *ngSwitchCase="'valentina'">Yo soy Valentina</p>
     <p *ngSwitchDefault>Mi nombre no está almacenado</p>
   </div>
+
+  <hr/>
+
+  <h1>Manejo de Input</h1>
+  <input type="color" [formControl]="colorCtrl">
+  <p>color: {{ colorCtrl.value }}</p>
+  <svg>
+    <g>
+      <rect x="0" y="0" height="100" width="100" [attr.fill]="colorCtrl.value"/>
+    </g>
+  </svg>
+
+  <hr/>
+
+  <h1>Estilos con Angular</h1>
+  <input type="number" [formControl]="widthCtrl">
+  <span class="box" [style.width.px]="widthCtrl.value"></span>
+
+  <hr/>
+
+  <h1>Clases css de forma dinámica</h1>
+  <p>
+    <input type="text" [formControl]="nameCtrl">
+    <br/>
+    <span class="message-error" [class.show]="nameCtrl.invalid && nameCtrl.touched">Nombre inválido</span>
+  </p>
+  <p>
+    <input type="text">
+  </p>
 </div>
