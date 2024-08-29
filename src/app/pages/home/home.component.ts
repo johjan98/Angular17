@@ -56,4 +56,17 @@ export class HomeComponent {
       tasks.map((task, position) => index === position ? {...task, completed: !task.completed}: task)
     );
   }
+
+  updateTaskEditingMode(index: number){
+    this.tasks.update(prevstate => 
+      prevstate.map((task, position) => index === position ? {...task, editing: true}: {...task, editing: false})
+    );
+  }
+
+  updateTaskText(index: number, event: Event){
+    const input = event.target as HTMLInputElement;
+    this.tasks.update(prevState =>
+      prevState.map((task, position) => index === position ? {...task, title: input.value, editing: false}: task)
+    )
+  }
 }
